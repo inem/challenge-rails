@@ -1,7 +1,3 @@
-class Merchant
-  attr_accessor :id, :name
-
-  def persist!
-    MerchantRepository.create!(:id => id, :name => name)
-  end
+class Merchant < ActiveRecord::Base
+  has_many :offers, dependent: :destroy
 end

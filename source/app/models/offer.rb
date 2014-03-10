@@ -1,3 +1,3 @@
-class Offer
-  attr_accessor :id, :merchant_id, :title, :description, :url, :expires_at
+class Offer < ActiveRecord::Base
+  belongs_to :merchant
 end
