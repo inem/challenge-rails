@@ -1,3 +1,13 @@
+# Notes about implementation
+
+* Additional api_id column was added, so we're not loosing ids from API
+* No validations in models - because we need to store everything we get from API, even if we get invalid data in terms of our application. Data filtering logic should be programmed separately
+* Secret key should not be stored in repository, so dotenv gem is used to load key from .env file
+* CJ::Crawler only gets data from API with secret key
+* CJ::XmlParser provides a way to traverse through XML data
+* OffersCreator service actually fills data into DB
+
+
 # Ruby on Rails Challenge
 In order to be considered for the Ruby on Rails position, you must complete the task below. This challenge will demonstrate your abilities with the framework, testing, APIs, and frontend design.
 

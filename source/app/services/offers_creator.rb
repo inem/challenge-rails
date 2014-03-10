@@ -6,8 +6,8 @@ class OffersCreator
       merchant = Merchant.find_by_api_id(merchant_api_id)
       unless merchant
         merchant = Merchant.new
-        merchant.api_id   = merchant_api_id
-        merchant.name = CJ::XmlParser.get_value(node, 'advertiser-name')
+        merchant.api_id = merchant_api_id
+        merchant.name   = CJ::XmlParser.get_value(node, 'advertiser-name')
         merchant.save!
       end
 
