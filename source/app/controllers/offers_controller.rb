@@ -4,7 +4,9 @@ class OffersController < ApplicationController
   end
 
   def fetch
-    offers = OffersCreator.proceed!("https://linksearch.api.cj.com/v2/link-search?website-id=5742006&records-per-page=20", ENV["CJ_KEY"])
+    cj = CJ::Crawler.new(ENV["CJ_KEY"])
+    xml = cj.get("https://linksearch.api.cj.com/v2/link-search?website-id=5742006&records-per-page=20")
+    offers = OffersCreator.proceed!(xml)
     flash[:notice] = "#{offers.size} new offers created!"
 
     redirect_to offers_path

@@ -1,9 +1,7 @@
 class OffersCreator
-  def self.proceed!(url, key)
-    cj = CJ::Crawler.new(key)
-
+  def self.proceed!(xml)
     offers = []
-    CJ::XmlParser.new(cj.get(url)) do |node|
+    CJ::XmlParser.new(xml) do |node|
       merchant_api_id = CJ::XmlParser.get_value(node, 'advertiser-id')
       merchant = Merchant.find_by_api_id(merchant_api_id)
       unless merchant
