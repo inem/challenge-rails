@@ -1,0 +1,13 @@
+#offers_index
+
+  .offers
+    - if @offers.any?
+      %h1
+        = pluralize(@offers.size, 'Offer')
+      %p
+        Only showing offers with not blank titles
+      - @offers.each do |offer|
+        %div.offer
+          %h2= offer.title
+          %p= offer.description
+          =button_to 'Get deal', offer.url
